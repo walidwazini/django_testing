@@ -21,6 +21,20 @@ monthly_target = {
 }
 
 
+def index(req):
+    list_items = ''
+    months = list(monthly_target.keys())
+
+    for month in months:
+        capitalizedMonth = month.capitalize()
+        month_path = reverse('abc', args=[month])
+        list_items += f'<li><a href="{month_path}">{capitalizedMonth}<a/><li/>'
+
+    response_data = f'<ul>{list_items}</ul>'
+
+    return HttpResponse(response_data)
+
+
 def monthly_challenge_by_number(req, month):
     months = list(monthly_target.keys())
     if month > len(months):
@@ -36,6 +50,7 @@ def monthly_challenge_by_number(req, month):
 def monthly_challenge(req, month):
     try:
         challenge_text = monthly_target[month]
+        res_data = f'<h3>{challenge_text}<h3>'
+        return HttpResponse(res_data)
     except:
         return HttpResponseNotFound('The value not availble.')
-    return HttpResponse(challenge_text)
