@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -16,8 +17,23 @@ monthly_target = {
     'aug': 'Eat more fish.',
     'sep': 'Eat more meat for entire month.',
     'oct': 'Do sunning for atleast 2 hours daily.',
-    'nov': 'Exercise 30minutes daily.',
+    'nov': 'Exercise 30 minutes daily.',
     'dec': 'Read more books.'
+}
+
+month_longname = {
+    'jan': 'January',
+    'feb': 'February',
+    'mar': 'March',
+    'apr': 'April',
+    'may': 'May',
+    'jun': 'June',
+    'jul': 'July',
+    'aug': 'August',
+    'sep': 'September',
+    'oct': 'October',
+    'nov': 'November',
+    'dec': 'December'
 }
 
 
@@ -50,7 +66,16 @@ def monthly_challenge_by_number(req, month):
 def monthly_challenge(req, month):
     try:
         challenge_text = monthly_target[month]
-        res_data = f'<h3>{challenge_text}<h3>'
-        return HttpResponse(res_data)
+        # selected_month = month.capitalize()
+        selected_month = month_longname[month]
+
+        print(selected_month)
+        
+        # Make it dynamic 
+        return render(req,'challenges/challenge.html', {
+            "text": challenge_text,
+            "month" : selected_month,
+        })
+
     except:
         return HttpResponseNotFound('The value not availble.')
