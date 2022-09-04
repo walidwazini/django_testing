@@ -16,7 +16,11 @@
   style=" display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #21213d; color: rgb(9, 168, 168); font-family: Arial, Helvetica, sans-serif;">
 
   <h2>This {{month}}'s challenge :</h2>
+  {% if text is not None %}
   <p>{{text}}</p>
+  {% else %}
+  <p>No challenge for this month, take a rest.</p>
+  {% endif %}
 </body>
 
 </html>

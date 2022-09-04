@@ -12,9 +12,9 @@
   <ul>
     {% for month in months %}
     <li style="margin-top: 2px; font-size: large;">
-      <a href="{% url 'abc' month %}">
-        {{ month | title }}
-      </a>
+      <h2>
+        <a href="{% url 'abc' month %}">{{ month | title }}</a>
+      </h2>
     </li>
     {% endfor %}
   </ul>

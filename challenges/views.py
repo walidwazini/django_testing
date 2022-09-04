@@ -12,13 +12,13 @@ monthly_target = {
     'mar': 'Drinks more plain water.',
     'apr': 'Eat more fish.',
     'may': 'Eat more meat for entire month.',
-    'jun': 'Do sunning for atleast 2 hours daily.',
+    'jun': None,
     'jul': 'Drinks more plain water.',
     'aug': 'Eat more fish.',
     'sep': 'Eat more meat for entire month.',
     'oct': 'Do sunning for atleast 2 hours daily.',
     'nov': 'Exercise 30 minutes daily.',
-    'dec': 'Read more books.'
+    'dec': None,
 }
 
 month_longname = {
